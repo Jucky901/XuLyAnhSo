@@ -1,4 +1,3 @@
-import argparse
 import numpy as np
 import cv2 as cv
 import joblib
@@ -24,7 +23,7 @@ top_k = 5000
 
 # Load the face recognition model (SVC)
 svc = joblib.load('model/svc.pkl')
-mydict = ['LamTuan', 'QuocVuong']
+mydict = ['LamTuan', 'QuocVuong', 'Thang', 'Tin', 'Tu']
 
 # Function to visualize results
 def visualize(input, faces, fps, thickness=2):
@@ -40,11 +39,23 @@ def visualize(input, faces, fps, thickness=2):
 st.title("Face Recognition App")
 st.write("This app detects and recognizes faces using your webcam.")
 
-start_camera = st.button("Start Camera")
+# Layout for buttons in the same row
+col1, col2 = st.columns(2)
 
-if start_camera:
+with col1:
+    start_camera = st.button("Start Camera")
+
+with col2:
+    stop_camera = st.button("Stop Camera")
+
+if 'run_camera' not in st.session_state:
+    st.session_state.run_camera = False
+
+if start_camera and not st.session_state.run_camera:
+    st.session_state.run_camera = True
     stframe = st.empty()
 
+    # Initialize face detection and recognition
     detector = cv.FaceDetectorYN.create(
         face_detection_model,
         "",
@@ -61,7 +72,7 @@ if start_camera:
     detector.setInputSize([frameWidth, frameHeight])
     tm = cv.TickMeter()
 
-    while True:
+    while st.session_state.run_camera:
         hasFrame, frame = cap.read()
         if not hasFrame:
             st.write("No frame detected!")
@@ -90,3 +101,7 @@ if start_camera:
 
         # Optional: control frame rate
         time.sleep(0.03)
+
+elif stop_camera and st.session_state.run_camera:
+    st.session_state.run_camera = False
+    st.write("Camera stopped.")

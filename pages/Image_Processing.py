@@ -81,7 +81,7 @@ def process_chapter5(imgin_gray):
     functions_map = {
         "CreateMotionNoise": lambda: c5.CreateMotionNoise(imgin_gray),
         "DenoiseMotion": lambda: c5.DenoiseMotion(imgin_gray),
-        "DenoisestMotion": lambda: c5.DenoiseMotion(c5.DenoisestMotion(imgin_gray)),
+        "DenoisestMotion": lambda: c5.DenoiseMotion(imgin_gray),
     }
     return functions_map[chapter5_selected]()
     
@@ -89,21 +89,15 @@ def process_chapter5(imgin_gray):
 # Chức năng chương 9
 def process_chapter9(imgin_gray):
     chapter9_options = [
-        "Erosion", "Dilation", "OpeningClosing", "Boundary", 
-        "HoleFilling", "HoleFillingMouse", "ConnectedComponent", "CountRice"
-    ]
+        "Erosion", "Dilation", "Boundary", "Contour"]
     
     chapter9_selected = st._main.selectbox("Select an option", chapter9_options)
     
     functions_map = {
         "Erosion": lambda: c9.Erosion(imgin_gray),
         "Dilation": lambda: c9.Dilation(imgin_gray),
-        "OpeningClosing": lambda: c9.OpeningClosing(imgin_gray),
         "Boundary": lambda: c9.Boundary(imgin_gray),
-        "HoleFilling": lambda: c9.HoleFilling(imgin_gray),
-        "HoleFillingMouse": lambda: c9.HoleFillingMouse(imgin_gray),
-        "ConnectedComponent": lambda: c9.ConnectedComponent(imgin_gray),
-        "CountRice": lambda: c9.CountRice(imgin_gray),
+        "Contour": lambda: c9.Contour(imgin_gray),
     }
     
     return functions_map[chapter9_selected]()

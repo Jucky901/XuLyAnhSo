@@ -164,3 +164,20 @@ def DenoiseMotion(imgin):
     g = np.clip(g, 0, L-1)
     g = g.astype(np.uint8)
     return g
+# img = cv2.imread(r'c:\Users\tanbe\Pictures\bimbim.jpg', 0)  # Đọc ảnh ở chế độ grayscale
+# imgout = DenoiseMotion(img)
+# print(imgout.shape)
+# print(img.dtype)
+# print(imgout.dtype)
+# print(img.shape)
+
+# # Hiển thị ảnh gốc và di chuyển cửa sổ đến vị trí (100, 100)
+# cv2.imshow('Original Image', img)
+# cv2.moveWindow('Original Image', 100, 100)
+
+# # Hiển thị ảnh đã khử nhiễu và di chuyển cửa sổ đến vị trí (500, 100)
+# cv2.imshow('Denoised Image', imgout)
+# cv2.moveWindow('Denoised Image', 500, 100)
+
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()

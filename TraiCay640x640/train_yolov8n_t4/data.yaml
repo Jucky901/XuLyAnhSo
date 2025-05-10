@@ -1,0 +1,5 @@
+train: /content/gdrive/MyDrive/TraiCay640x640/train/images
+val: /content/gdrive/MyDrive/TraiCay640x640/valid/images
+
+nc: 5
+names: ['chuoi', 'sau_rieng', 'tao', 'thanh_long', 'xoai']

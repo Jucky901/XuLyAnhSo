@@ -17,7 +17,7 @@ face_recognition_model = 'model/face_recognition_sface_2021dec.onnx'
 score_threshold = 0.8
 nms_threshold = 0.3
 top_k = 5000
-input_width, input_height = 320, 320  # Input size expected by the model
+input_width, input_height = 480, 480  # Input size expected by the model
 target_fps = 20
 
 # Function to visualize results
